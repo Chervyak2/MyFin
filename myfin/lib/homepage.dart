@@ -12,22 +12,28 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final PageController _pageController = PageController();
   int _currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: widget.screens[_currentIndex],
+      body: Stack(
+        children: [
+          _buildPageView(),
+        ],
+      ),
       bottomNavigationBar: GNav(
         backgroundColor: const Color.fromARGB(255, 21, 21, 21),
         gap: 10,
-        onTabChange: (index) {
-          setState(() {
-            _currentIndex = index;
-            widget.onTabChange(_currentIndex);
-          });
-        },
         selectedIndex: _currentIndex,
+        onTabChange: (index) {
+          _pageController.animateToPage(
+            index,
+            duration: const Duration(milliseconds: 500),
+            curve: Curves.easeInOut,
+          );
+        },
         color: Colors.white,
         activeColor: Colors.white,
         tabBackgroundColor: const Color.fromARGB(105, 85, 1, 122),
@@ -52,4 +58,20 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+
+  Widget _buildPageView() {
+    return PageView(
+      controller: _pageController,
+      onPageChanged: (index) {
+        setState(() {
+          _currentIndex = index;
+          widget.onTabChange(_currentIndex);
+        });
+      },
+      pageSnapping: true,
+      physics: const ClampingScrollPhysics(),
+      children: widget.screens,
+    );
+  }
+
 }
