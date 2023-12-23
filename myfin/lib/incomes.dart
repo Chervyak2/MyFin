@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+//TODO: Expenses views
 
 class IncomesScreen extends StatelessWidget {
   const IncomesScreen({super.key});
@@ -13,7 +14,8 @@ class IncomesScreen extends StatelessWidget {
             height: MediaQuery.of(context).size.height / 3,
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('gwue6.gif'), // Замените на свою картинку
+                image: AssetImage(
+                    'assets/images/pdrb8.gif'), // Замените на свою картинку
                 fit: BoxFit.cover,
               ),
             ),
@@ -68,7 +70,7 @@ class IncomesScreen extends StatelessWidget {
 
   String _getCurrentTime() {
     DateTime now = DateTime.now();
-    String formattedTime = '${now.hour}:${now.minute}';
+    String formattedTime = '${now.hour}:${now.minute}:${now.second}';
     return formattedTime;
   }
 }
