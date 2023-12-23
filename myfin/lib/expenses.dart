@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+//TODO: Expenses views
 
 class ExpensesScreen extends StatelessWidget {
   const ExpensesScreen({super.key});
@@ -13,8 +14,9 @@ class ExpensesScreen extends StatelessWidget {
             height: MediaQuery.of(context).size.height / 3,
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('pdrb4.gif'), // Замените на свою картинку
-                fit: BoxFit.cover,
+                image: AssetImage(
+                    'assets/images/oGTIiRyB1NE.jpg'), // Замените на свою картинку
+                fit: BoxFit.fill,
               ),
             ),
           ),

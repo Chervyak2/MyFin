@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
- @override
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
@@ -13,7 +13,8 @@ class HomeScreen extends StatelessWidget {
             height: MediaQuery.of(context).size.height / 3,
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('pdrb8.gif'), // Замените на свою картинку
+                image: AssetImage(
+                    'assets/images/pdrb8.gif'), // Замените на свою картинку
                 fit: BoxFit.cover,
               ),
             ),

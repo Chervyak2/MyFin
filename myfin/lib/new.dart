@@ -13,7 +13,8 @@ class NewScreen extends StatelessWidget {
             height: MediaQuery.of(context).size.height / 3,
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('pdrcq.gif'), // Замените на свою картинку
+                image: AssetImage(
+                    'assets/images/pdrcq.gif'), // Замените на свою картинку
                 fit: BoxFit.cover,
               ),
             ),

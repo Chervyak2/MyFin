@@ -71,12 +71,7 @@ flutter:
     - assets/
     - assets/icons/
     - assets/images/
-    - assets/home.jpg
-    - assets/oGTIiRyB1NE.jpg
-    - assets/pdrb8.gif
-    - assets/pdrb4.gif
-    - assets/gwue6.gif
-    - assets/pdrcq.gif
+    
    #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
