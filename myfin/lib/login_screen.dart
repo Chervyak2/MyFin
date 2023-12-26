@@ -4,7 +4,6 @@ import 'package:get/get_navigation/get_navigation.dart';
 import 'package:myfin/applogo_widget.dart';
 import 'package:myfin/bg_widget.dart';
 import 'package:myfin/consts/conctc.dart';
-import 'package:myfin/consts/lists.dart';
 import 'package:myfin/custom_textfield.dart';
 import 'package:myfin/our_button.dart';
 import 'package:myfin/signup_screen.dart';
