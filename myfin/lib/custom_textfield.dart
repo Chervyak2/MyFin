@@ -7,7 +7,10 @@ Widget customTextField({String? title,String? hint,controller}){
       title!.text.color(redColor).fontFamily(semibold).size(16).make(),
       5.heightBox,
       TextFormField(
-
+         controller: controller,
+        onChanged: (value) {
+          print('TextField value changed: $value');
+        },
         decoration: InputDecoration(
           hintStyle:TextStyle(
             fontFamily: semibold,
