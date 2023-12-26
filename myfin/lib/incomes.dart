@@ -70,7 +70,7 @@ class IncomesScreen extends StatelessWidget {
 
   String _getCurrentTime() {
     DateTime now = DateTime.now();
-    String formattedTime = '${now.hour}:${now.minute}:${now.second}';
+    String formattedTime = '${now.hour}:${now.minute}';
     return formattedTime;
   }
 }

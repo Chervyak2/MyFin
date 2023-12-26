@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get_core/get_core.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:myfin/applogo_widget.dart';
-import 'package:myfin/consts/colors.dart';
 import 'package:myfin/consts/conctc.dart';
 import 'package:myfin/login_screen.dart';
 
@@ -18,7 +17,7 @@ class _SplashScreenState extends State<SplashScreen>{
   //creating a method to change screen
   changeScreen(){
     Future.delayed(Duration(seconds: 3),(){
-      Get.to(() => const LoginScreen());
+      Get.to(() => LoginScreen());
     }
     );
   }
