@@ -28,11 +28,7 @@ class _HomePageState extends State<HomePage> {
         gap: 10,
         selectedIndex: _currentIndex,
         onTabChange: (index) {
-          _pageController.animateToPage(
-            index,
-            duration: const Duration(milliseconds: 500),
-            curve: Curves.easeInOut,
-          );
+          _pageController.jumpToPage(index);
         },
         color: Colors.white,
         activeColor: Colors.white,
@@ -73,5 +69,4 @@ class _HomePageState extends State<HomePage> {
       children: widget.screens,
     );
   }
-
 }
