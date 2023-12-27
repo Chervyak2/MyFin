@@ -88,6 +88,10 @@ class DateWidget extends StatelessWidget {
         monthName = 'December';
         break;
     }
+    if (now.day > 3 && now.day < 21) {
+      String formattedDate = '$monthName ${now.day}th \n${now.year}';
+      return formattedDate;
+    }
     if (now.day % 10 == 1) {
       String formattedDate = '$monthName ${now.day}st \n${now.year}';
       return formattedDate;
