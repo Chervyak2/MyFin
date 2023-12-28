@@ -1,8 +1,15 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:myfin/consts/conctc.dart';
 import 'package:myfin/splash_screen.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  try {
+    await Firebase.initializeApp();
+  } catch (e, stackTrace) {
+    print('Error initializing Firebase: $e\n$stackTrace');
+  }
   runApp(const MyApp());
 }
 
@@ -11,16 +18,33 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: MyFin(),
+    );
+  }
+}
+
+class MyFin extends StatelessWidget{
+  const MyFin({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context){
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: "MyFin",
+      title: appname,
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.transparent,
-        appBarTheme: const AppBarTheme(backgroundColor: Colors.transparent),
-        fontFamily: regular,
-      ),
-     home: const SplashScreen(),
-    );
+        appBarTheme: const AppBarTheme(
+          iconTheme: IconThemeData(
+            color: darkFontGrey,
+          ),
+          elevation: 0.0,
+          backgroundColor: Colors.transparent),
+          fontFamily: regular,
+        ),
+        home: const SplashScreen(),
+      );
   }
 }
 

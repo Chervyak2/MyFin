@@ -1,14 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_core/get_core.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:myfin/applogo_widget.dart';
+import 'package:myfin/auth_controller.dart';
 import 'package:myfin/bg_widget.dart';
 import 'package:myfin/consts/conctc.dart';
 import 'package:myfin/custom_textfield.dart';
 import 'package:myfin/our_button.dart';
 
-class SignupScreen extends StatelessWidget {
-  const SignupScreen({super.key});
+class SignupScreen extends StatefulWidget {
+  const SignupScreen({Key? key}):super(key: key);
+
+  @override
+  State<SignupScreen> createState() => _SignupScreenState();
+}
+
+class _SignupScreenState extends State<SignupScreen>{
+  bool? isCheck = false;
+  var controller = Get.put(AuthController());
+
 
   @override
   Widget build(BuildContext context) {
@@ -114,4 +125,10 @@ class SignupScreen extends StatelessWidget {
       ),
     ));
   }
+
 }
+
+
+
+
+
