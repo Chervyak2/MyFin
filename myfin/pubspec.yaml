@@ -99,6 +99,11 @@ flutter:
   - family: sans_bold
     fonts:
       - asset: assets/fonts/sans_bold.ttf
+
+  - family: Poppins
+    fonts:
+      - asset: assets/fonts/Poppins-Regular.ttf
+
   #       - asset: fonts/Schyler-Regular.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
