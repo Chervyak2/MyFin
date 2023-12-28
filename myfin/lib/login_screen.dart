@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_core/get_core.dart';
 import 'package:get/get.dart';
-import 'package:get/get_navigation/get_navigation.dart';
 import 'package:myfin/applogo_widget.dart';
 import 'package:myfin/bg_widget.dart';
 import 'package:myfin/consts/conctc.dart';
@@ -9,10 +7,10 @@ import 'package:myfin/consts/lists.dart';
 import 'package:myfin/custom_textfield.dart';
 import 'package:myfin/our_button.dart';
 import 'package:myfin/signup_screen.dart';
-import 'package:myfin/LoginController.dart';
+import 'package:myfin/login_controller.dart';
 
 class LoginScreen extends StatelessWidget {
-  LoginScreen({Key? key}) : super(key: key);
+  LoginScreen({super.key});
 
   final LoginController loginController = Get.put(LoginController());
 
@@ -59,10 +57,7 @@ class LoginScreen extends StatelessWidget {
                         loginController.passwordController.text,
                       );
                     },
-                  )
-                      .box
-                      .width(context.screenWidth - 50)
-                      .make(),
+                  ).box.width(context.screenWidth - 50).make(),
                   5.heightBox,
                   createNewAccount.text.color(fontGrey).make(),
                   5.heightBox,
@@ -73,10 +68,7 @@ class LoginScreen extends StatelessWidget {
                     onPress: () {
                       Get.to(() => const SignupScreen());
                     },
-                  )
-                      .box
-                      .width(context.screenWidth - 50)
-                      .make(),
+                  ).box.width(context.screenWidth - 50).make(),
                   10.heightBox,
                   loginWith.text.color(fontGrey).make(),
                   5.heightBox,

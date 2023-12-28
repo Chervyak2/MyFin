@@ -1,7 +1,6 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:myfin/homepage.dart';
-import 'package:flutter/foundation.dart';
 import 'home.dart';
 import 'new.dart';
 import 'expenses.dart';
@@ -12,21 +11,20 @@ class LoginController extends GetxController {
   TextEditingController passwordController = TextEditingController();
 
   void login(String email, String password) {
-
     print('Entered Email: $email');
     print('Entered Password: $password');
     // Пример условий для проверки корректности ввода
     if (isValidEmail(email) && isValidPassword(password)) {
       // Корректный ввод - переход на домашнюю страницу
       Get.off(() => HomePage(
-        onTabChange: (newIndex) => onTabChange(newIndex),
-        screens: const [
-          HomeScreen(),
-          NewScreen(),
-          ExpensesScreen(),
-          IncomesScreen(),
-        ],
-      ));
+            onTabChange: (newIndex) => onTabChange(newIndex),
+            screens: const [
+              HomeScreen(),
+              NewScreen(),
+              ExpensesScreen(),
+              IncomesScreen(),
+            ],
+          ));
     } else {
       // Некорректный ввод - показать сообщение об ошибке
       Get.snackbar("Ошибка", "Некорректный ввод логина или пароля");
@@ -46,9 +44,7 @@ class LoginController extends GetxController {
   }
 
   void onTabChange(int newIndex) {
-    if (kDebugMode) {
-      print('Tab changed to index $newIndex');
-    }
+    print('Tab changed to index $newIndex');
     // Обработка изменения индекса, если это необходимо
     // Например, можно сохранить индекс в переменной класса LoginController
     // currentIndex.value = newIndex;

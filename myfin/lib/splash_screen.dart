@@ -6,7 +6,7 @@ import 'package:myfin/consts/conctc.dart';
 import 'package:myfin/login_screen.dart';
 
 class SplashScreen extends StatefulWidget{
-  const SplashScreen({Key? key}): super(key:key);
+  const SplashScreen({super.key});
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();
@@ -16,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen>{
 
   //creating a method to change screen
   changeScreen(){
-    Future.delayed(Duration(seconds: 3),(){
+    Future.delayed(const Duration(seconds: 3),(){
       Get.to(() => LoginScreen());
     }
     );
@@ -45,7 +45,7 @@ class _SplashScreenState extends State<SplashScreen>{
             appname.text.fontFamily(bold).size(22).white.make(),
             5.heightBox,
             appversion.text.white.make(),
-            Spacer(),
+            const Spacer(),
             credits.text.white.fontFamily(semibold).make(),
             30.heightBox,
 
