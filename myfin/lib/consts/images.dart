@@ -53,3 +53,4 @@ const icWholeSale = "assets/icons/wholesale.png";
 //images
 
 const imgWallet = "assets/images/wallet.png";
+const imgAvatar1 = "assets/icons/avatar1.png";
