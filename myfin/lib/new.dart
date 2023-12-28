@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:myfin/date_widget.dart';
 
 class NewScreen extends StatefulWidget {
   const NewScreen({Key? key}) : super(key: key);
