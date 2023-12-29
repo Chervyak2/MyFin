@@ -25,11 +25,11 @@ class ExpensesScreen extends StatelessWidget {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  expansionCategoryTile("Category1"),
-                  expansionCategoryTile("NIGGERS"),
-                  expansionCategoryTile("Category3"),
-                  expansionCategoryTile("Category4"),
-                  // Add other widgets as needed
+                  expansionCategoryTile(
+                      "Category1", "Description 1"), //Description from new.dart
+                  expansionCategoryTile("NIGGERS", "Description 2"),
+                  expansionCategoryTile("Category3", "Description 3"),
+                  expansionCategoryTile("Category4", "Description 4"),
                 ],
               ),
             ),
@@ -39,20 +39,20 @@ class ExpensesScreen extends StatelessWidget {
     );
   }
 
-  ExpansionTile expansionCategoryTile(String categoryName) {
+  ExpansionTile expansionCategoryTile(String categoryName, String recordName) {
     return ExpansionTile(
       title: Text('$categoryName:'),
-      subtitle: Text('price total here'),
+      subtitle: Text('${countTotal(price).toStringAsFixed(2)}\$'),
       collapsedTextColor: Colors.white,
       backgroundColor: Colors.black,
-      textColor: Colors.white, // Assuming whiteColor is defined
+      textColor: Colors.white,
       childrenPadding: const EdgeInsets.only(left: 20),
       leading: const Icon(Icons.favorite_border),
       children: List.generate(
         3,
         (index) => Column(
           children: [
-            recordListTile('Records', price.toDouble()),
+            recordListTile(recordName, price.toDouble()),
           ],
         ),
       ),
@@ -64,32 +64,6 @@ class ExpensesScreen extends StatelessWidget {
       textColor: Colors.white,
       title: Text(recordName),
       subtitle: Text('$price\$'),
-      onTap: () {
-        print("tapped");
-      },
-      // onLongPress: () {
-      //   showMenu(
-      //     context: context,
-      //     position: RelativeRect.fromLTRB(0, 0, 0, 0),
-      //     items: [
-      //       PopupMenuItem(
-      //         child: Text('EDITING'),
-      //         value: 1,
-      //       ),
-      //       PopupMenuItem(
-      //         child: Text('DELETING'),
-      //         value: 2,
-      //       ),
-      //     ],
-      //     elevation: 8,
-      //   ).then((value) {
-      //     if (value == 1) {
-      //       // Handle option 1
-      //     } else if (value == 2) {
-      //       // Handle option 2
-      //     }
-      //   });
-      // },
     );
   }
 
