@@ -8,7 +8,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
         body: Center(
-      child: DateWidget('assets/images/pdrcq.gif'),
+      child: DateWidget(),
     ));
   }
 }

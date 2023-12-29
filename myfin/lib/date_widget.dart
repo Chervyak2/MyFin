@@ -1,37 +1,38 @@
 import 'package:flutter/material.dart';
 
 class DateWidget extends StatelessWidget {
-  final String imagePath;
-
-  const DateWidget(this.imagePath, {Key? key}) : super(key: key);
+  const DateWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black,
-      body: Stack(
-        children: [
-          Container(
-            height: MediaQuery.of(context).size.height / 3,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage(imagePath),
-                fit: BoxFit.cover,
+    return Container(
+      height: MediaQuery.of(context).size.height,
+      child: Scaffold(
+        backgroundColor: Colors.black,
+        body: Stack(
+          children: [
+            Container(
+              height: MediaQuery.of(context).size.height / 3,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(getMonthGif()),
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
-          ),
-          Positioned(
-            top: 16,
-            left: 16,
-            child: _buildDateInfo(),
-          ),
-          // Add other elements of your screen as needed
-        ],
+            Positioned(
+              top: 16,
+              left: 16,
+              child: buildDateInfo(),
+            ),
+            // Add other elements of your screen as needed
+          ],
+        ),
       ),
     );
   }
 
-  Widget _buildDateInfo() {
+  Widget buildDateInfo() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -60,6 +61,23 @@ class DateWidget extends StatelessWidget {
     String daySuffix = _getDaySuffix(now.day);
 
     return '$monthName ${now.day}$daySuffix \n${now.year}';
+  }
+
+  String getMonthGif() {
+    DateTime now = DateTime.now();
+    if (now.month == 12 || now.month == 1 || now.month == 2) {
+      return 'assets/images/WinterHome.gif';
+    }
+    if (now.month == 3 || now.month == 4 || now.month == 5) {
+      return 'assets/images/Spring.gif';
+    }
+    if (now.month == 6 || now.month == 7 || now.month == 8) {
+      return 'assets/images/Summer.gif';
+    }
+    if (now.month == 9 || now.month == 10 || now.month == 11) {
+      return 'assets/images/Autumn.gif';
+    }
+    return 'Unknown';
   }
 
   String _getMonthName(int month) {
