@@ -18,7 +18,7 @@ class LoginController extends GetxController {
       // Корректный ввод - переход на домашнюю страницу
       Get.off(() => HomePage(
             onTabChange: (newIndex) => onTabChange(newIndex),
-            screens: const [
+            screens: [
               HomeScreen(),
               NewScreen(),
               ExpensesScreen(),
