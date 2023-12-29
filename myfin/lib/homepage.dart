@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-
+import 'package:myfin/consts/conctc.dart';
+import 'package:myfin/consts/images.dart';
 class HomePage extends StatefulWidget {
   final Function(int) onTabChange;
   final List<Widget> screens;
@@ -25,7 +26,7 @@ class _HomePageState extends State<HomePage> {
       ),
       bottomNavigationBar: GNav(
         backgroundColor: const Color.fromARGB(255, 21, 21, 21),
-        gap: 10,
+        gap: 2,
         selectedIndex: _currentIndex,
         onTabChange: (index) {
           _pageController.jumpToPage(index);
@@ -36,19 +37,23 @@ class _HomePageState extends State<HomePage> {
         tabs: const [
           GButton(
             icon: Icons.home,
-            text: 'Home',
+            text: '',
           ),
           GButton(
             icon: Icons.new_label_rounded,
-            text: 'New',
+            text: '',
           ),
           GButton(
             icon: Icons.arrow_downward,
-            text: 'Expenses',
+            text: '',
           ),
           GButton(
             icon: Icons.arrow_upward,
-            text: 'Incomes',
+            text: '',
+          ),
+            GButton(
+            icon: Icons.account_circle,
+            text: '',
           ),
         ],
       ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:myfin/applogo_widget.dart';
+import 'package:myfin/auth_controller.dart';
 import 'package:myfin/bg_widget.dart';
 import 'package:myfin/consts/conctc.dart';
 import 'package:myfin/consts/lists.dart';
@@ -8,14 +9,26 @@ import 'package:myfin/custom_textfield.dart';
 import 'package:myfin/our_button.dart';
 import 'package:myfin/signup_screen.dart';
 import 'package:myfin/login_controller.dart';
+import 'package:myfin/homepage.dart';
+import 'package:myfin/profile_screen.dart';
+import 'home.dart';
+import 'new.dart';
+import 'expenses.dart';
+import 'incomes.dart';
+
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
 
   final LoginController loginController = Get.put(LoginController());
 
+  void onTabChange(int newIndex) {
+    print('Tab changed to index $newIndex');
+  }
+
   @override
   Widget build(BuildContext context) {
+    var controller = Get.put(AuthController());
     return bgWidget(
       child: Scaffold(
         resizeToAvoidBottomInset: false,
@@ -27,7 +40,7 @@ class LoginScreen extends StatelessWidget {
               10.heightBox,
               "Log in to $appname".text.fontFamily(bold).white.size(18).make(),
               15.heightBox,
-              Column(
+              Obx(()=> Column(
                 children: [
                   customTextField(
                     title: 'Email',
@@ -47,15 +60,33 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
                   5.heightBox,
-                  ourButton(
+                  controller.isloading.value 
+                  ? const CircularProgressIndicator(
+                    valueColor: AlwaysStoppedAnimation(redColor),
+                  )
+                  : ourButton(
                     color: redColor,
                     title: login,
                     textColor: whiteColor,
-                    onPress: () {
-                      loginController.login(
-                        loginController.emailController.text,
-                        loginController.passwordController.text,
-                      );
+                    onPress: () async{
+                      controller.isloading(true);
+
+                      await controller.loginMethod(context: context).then((value){
+                        if (value != null) {
+                          VxToast.show(context, msg: loggedin);
+                              Get.off(() => HomePage(
+                              onTabChange: (newIndex) => onTabChange(newIndex),
+                              screens: const [
+                              HomeScreen(),
+                              NewScreen(),
+                              ExpensesScreen(),
+                              IncomesScreen(),
+                              ProfileScreen(),],
+                        ));
+                        } else {
+                          controller.isloading(false);
+                        }
+                      });
                     },
                   ).box.width(context.screenWidth - 50).make(),
                   5.heightBox,
@@ -98,7 +129,7 @@ class LoginScreen extends StatelessWidget {
                   .width(context.screenWidth - 70)
                   .shadowSm
                   .make()
-            ],
+          )],
           ),
         ),
       ),

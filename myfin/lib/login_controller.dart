@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:myfin/homepage.dart';
+import 'package:myfin/profile_screen.dart';
 import 'home.dart';
 import 'new.dart';
 import 'expenses.dart';
@@ -23,6 +24,7 @@ class LoginController extends GetxController {
               NewScreen(),
               ExpensesScreen(),
               IncomesScreen(),
+              ProfileScreen()
             ],
           ));
     } else {

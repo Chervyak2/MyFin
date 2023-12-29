@@ -1,11 +1,17 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:myfin/consts/conctc.dart';
 import 'package:myfin/consts/firebase_consts.dart';
 
 class AuthController extends GetxController{
+  var isloading = false.obs;
+
+  //textcontrollers
+  var emailController = TextEditingController();
+  var passwordController = TextEditingController();
 
   //login method
   Future<UserCredential?> loginMethod({email,password,context}) async{
@@ -38,7 +44,8 @@ class AuthController extends GetxController{
       'name' : name,
       'password' : password,
       'email' : email,
-      'imageUrl': ''
+      'imageUrl': '',
+      'id': currentUser!.uid
 
     });
   }

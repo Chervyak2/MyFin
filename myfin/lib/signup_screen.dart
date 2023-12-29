@@ -12,6 +12,7 @@ import 'package:myfin/incomes.dart';
 import 'package:myfin/login_controller.dart';
 import 'package:myfin/our_button.dart';
 import 'package:myfin/homepage.dart';
+import 'package:myfin/profile_screen.dart';
 import 'new.dart';
 import 'expenses.dart';
 import 'login_controller.dart';
@@ -34,10 +35,8 @@ var passwordRetypeController = TextEditingController();
 
   void onTabChange(int newIndex) {
     print('Tab changed to index $newIndex');
-    // Обработка изменения индекса, если это необходимо
-    // Например, можно сохранить индекс в переменной класса LoginController
-    // currentIndex.value = newIndex;
   }
+
   @override
   Widget build(BuildContext context) {
     return bgWidget(
@@ -51,6 +50,7 @@ var passwordRetypeController = TextEditingController();
             10.heightBox,
             "Join the $appname".text.fontFamily(bold).white.size(18).make(),
             15.heightBox,
+            Obx(() => 
             Column(
               children: [
                 customTextField(hint: nameHint, title: name, controller: nameController, isPass: false),
@@ -109,12 +109,15 @@ var passwordRetypeController = TextEditingController();
                 ),
                 5.heightBox,
                 
-                ourButton(
+                controller.isloading.value ? const CircularProgressIndicator(
+                    valueColor: AlwaysStoppedAnimation(redColor),
+                  ) : ourButton(
                         color: isCheck == true ? redColor:lightGrey,
                         title: signup,
                         textColor: whiteColor,
                         
                         onPress: () async{
+                          controller.isloading(true);
                           if(isCheck !=false){
                             try {
                               await controller.signupMethod(
@@ -135,12 +138,14 @@ var passwordRetypeController = TextEditingController();
                                             NewScreen(),
                                             ExpensesScreen(),
                                             IncomesScreen(),
+                                            ProfileScreen(),
                                             ],
                                             ));
                                 });
                             } catch (e) {
                               auth.signOut();
                               VxToast.show(context, msg: e.toString());
+                              controller.isloading(false);
                             }
                             
                           }
@@ -166,7 +171,7 @@ var passwordRetypeController = TextEditingController();
                   Get.back();
                 })
               ],
-            )
+            ))
                 .box
                 .white
                 .rounded
