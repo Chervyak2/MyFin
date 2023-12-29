@@ -7,7 +7,7 @@ import 'package:myfin/consts/firebase_consts.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await Firebase.initializeApp();
+   await Firebase.initializeApp(options: FirebaseOptions(apiKey: 'AIzaSyBVd-tkdRZZyHOZTOxROG7CnQmdJiNbOKY', appId: '1:997969505215:android:1cd7dcdcf9f07ae2ff8f0a', messagingSenderId: '', projectId: 'myfin-3fde1'));
 
   runApp(const MyApp());
 } 

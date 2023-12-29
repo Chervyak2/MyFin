@@ -8,8 +8,13 @@ import 'package:myfin/bg_widget.dart';
 import 'package:myfin/consts/conctc.dart';
 import 'package:myfin/custom_textfield.dart';
 import 'package:myfin/home.dart';
+import 'package:myfin/incomes.dart';
+import 'package:myfin/login_controller.dart';
 import 'package:myfin/our_button.dart';
-
+import 'package:myfin/homepage.dart';
+import 'new.dart';
+import 'expenses.dart';
+import 'login_controller.dart';
 class SignupScreen extends StatefulWidget {
   const SignupScreen({Key? key}):super(key: key);
 
@@ -27,7 +32,12 @@ var emailController = TextEditingController();
 var passwordController = TextEditingController();
 var passwordRetypeController = TextEditingController();
 
-
+  void onTabChange(int newIndex) {
+    print('Tab changed to index $newIndex');
+    // Обработка изменения индекса, если это необходимо
+    // Например, можно сохранить индекс в переменной класса LoginController
+    // currentIndex.value = newIndex;
+  }
   @override
   Widget build(BuildContext context) {
     return bgWidget(
@@ -98,10 +108,12 @@ var passwordRetypeController = TextEditingController();
                   ],
                 ),
                 5.heightBox,
+                
                 ourButton(
                         color: isCheck == true ? redColor:lightGrey,
                         title: signup,
                         textColor: whiteColor,
+                        
                         onPress: () async{
                           if(isCheck !=false){
                             try {
@@ -116,12 +128,21 @@ var passwordRetypeController = TextEditingController();
                                   );
                                 }).then((value) {
                                   VxToast.show(context, msg: loggedin);
-                                  Get.offAll(()=>HomeScreen());
+                                        Get.off(() => HomePage(
+                                          onTabChange: (newIndex) => onTabChange(newIndex),
+                                          screens: const [
+                                            HomeScreen(),
+                                            NewScreen(),
+                                            ExpensesScreen(),
+                                            IncomesScreen(),
+                                            ],
+                                            ));
                                 });
                             } catch (e) {
                               auth.signOut();
                               VxToast.show(context, msg: e.toString());
                             }
+                            
                           }
                         })
                     .box
