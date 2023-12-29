@@ -3,14 +3,14 @@ import 'package:myfin/bg_widget.dart';
 import 'package:myfin/consts/conctc.dart';
 
 class ProfileScreen extends StatelessWidget{
-  const  ProfileScreen({Key? key}): super(key: key);
+  const  ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context){
     return bgWidget(
       child: Scaffold(
         body: SafeArea(child: Container(
-          padding: EdgeInsets.all(8),
+          padding: const EdgeInsets.all(8),
           child: Column(
             children: [ 
               Row(
