@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "997969505215",
+    "project_id": "myfin-3fde1",
+    "storage_bucket": "myfin-3fde1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:997969505215:android:1cd7dcdcf9f07ae2ff8f0a",
+        "android_client_info": {
+          "package_name": "com.example.myfin"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVd-tkdRZZyHOZTOxROG7CnQmdJiNbOKY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

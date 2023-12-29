@@ -31,13 +31,13 @@ class LoginScreen extends StatelessWidget {
                 children: [
                   customTextField(
                     title: 'Email',
-                    hint: 'Enter your email',
-                    controller: loginController.emailController,
+                    hint: emailHint,
+                    isPass: false,
                   ),
                   customTextField(
                     title: 'Password',
-                    hint: 'Enter your password',
-                    controller: loginController.passwordController,
+                    hint: passwordHint,
+                    isPass: true,
                   ),
                   Align(
                     alignment: Alignment.centerRight,
