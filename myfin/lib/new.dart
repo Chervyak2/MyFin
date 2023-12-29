@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class NewScreen extends StatefulWidget {
-  const NewScreen({Key? key}) : super(key: key);
+  const NewScreen({super.key});
 
   @override
   _NewScreenState createState() => _NewScreenState();
@@ -19,7 +19,7 @@ class _NewScreenState extends State<NewScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: Color.fromRGBO(20, 20, 20, 1),
+      backgroundColor: const Color.fromRGBO(20, 20, 20, 1),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -57,7 +57,7 @@ class _NewScreenState extends State<NewScreen> {
             Container(
               width: MediaQuery.of(context).size.width,
               height: 50, // Изменено здесь
-              color: Color.fromRGBO(20, 20, 20, 1),
+              color: const Color.fromRGBO(20, 20, 20, 1),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -69,7 +69,7 @@ class _NewScreenState extends State<NewScreen> {
                     },
                     child: Text('New record', style: TextStyle(color: _showFirstInfo ? Colors.white : Colors.grey, fontFamily: 'Poppins', fontSize: 24)),
                   ),
-                  SizedBox(width: 30),
+                  const SizedBox(width: 30),
                   TextButton(
                     onPressed: () {
                       setState(() {
@@ -81,7 +81,7 @@ class _NewScreenState extends State<NewScreen> {
                 ],
               ),
             ),
-            SizedBox(height: 40), // Добавлено здесь
+            const SizedBox(height: 40), // Добавлено здесь
             _showFirstInfo ? FirstInfo(_firstInfoController1, _firstInfoController2, _firstInfoController3) : SecondInfo(_secondInfoController1),
             Container(
               height: 60,
@@ -93,7 +93,7 @@ class _NewScreenState extends State<NewScreen> {
               child: Center(
                 child: TextButton(
                   onPressed: () {},
-                  child: Text('CREATE', style: TextStyle(color: Colors.white, fontFamily: 'Poppins', fontSize: 28)),
+                  child: const Text('CREATE', style: TextStyle(color: Colors.white, fontFamily: 'Poppins', fontSize: 28)),
                 ),
               ),
             )
@@ -112,7 +112,7 @@ class _NewScreenState extends State<NewScreen> {
 
   String _getCurrentDay() {
     DateTime now = DateTime.now();
-    String formattedDate = DateFormat('d').format(now) + 'th';
+    String formattedDate = '${DateFormat('d').format(now)}th';
     return formattedDate;
   }
 }
@@ -122,7 +122,7 @@ class FirstInfo extends StatefulWidget {
   final TextEditingController controller2;
   final TextEditingController controller3;
 
-  FirstInfo(this.controller1, this.controller2, this.controller3);
+  const FirstInfo(this.controller1, this.controller2, this.controller3, {super.key});
 
   @override
   _FirstInfoState createState() => _FirstInfoState(controller1, controller2, controller3);
@@ -140,17 +140,17 @@ class _FirstInfoState extends State<FirstInfo> {
   Widget build(BuildContext context) {
     double thirdScreenHeight = MediaQuery.of(context).size.height / 3 + 60;
 
-    return Container(
+    return SizedBox(
       height: thirdScreenHeight,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           _buildTextField('Shopping', 'Description', controller1),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           _buildTextField('\$30.00', 'Amount', controller2),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           _buildTextField('Nov 24.11.2023', 'Date', controller3),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           _buildSwitch('Type'),
         ],
       ),
@@ -161,8 +161,8 @@ class _FirstInfoState extends State<FirstInfo> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(info, style: TextStyle(color: Colors.white, fontSize: 18.0)),
-        Container(
+        Text(info, style: const TextStyle(color: Colors.white, fontSize: 18.0)),
+        SizedBox(
           width: 280.0,
           height: 45.0,
           child: Padding(
@@ -172,10 +172,10 @@ class _FirstInfoState extends State<FirstInfo> {
               decoration: InputDecoration(
                 hintText: hint,
                 filled: true,
-                fillColor: Color.fromARGB(255, 44, 44, 44),
-                contentPadding: EdgeInsets.only(left: 10.0, bottom: 10.0),
+                fillColor: const Color.fromARGB(255, 44, 44, 44),
+                contentPadding: const EdgeInsets.only(left: 10.0, bottom: 10.0),
               ),
-              style: TextStyle(fontSize: 18.0, color: Colors.white),
+              style: const TextStyle(fontSize: 18.0, color: Colors.white),
               textAlignVertical: TextAlignVertical.center,
             ),
           ),
@@ -188,7 +188,7 @@ class _FirstInfoState extends State<FirstInfo> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(info, style: TextStyle(color: Colors.white, fontSize: 18.0)),
+        Text(info, style: const TextStyle(color: Colors.white, fontSize: 18.0)),
         Transform.scale(
           scale: 1 / 1.8, // Уменьшение размера в 1.8 раза
           child: Switch(
@@ -202,7 +202,7 @@ class _FirstInfoState extends State<FirstInfo> {
                 activeTrackColor: const Color.fromARGB(255, 26, 26, 26), // Цвет полосы
           ),
         ),
-        Padding(
+        const Padding(
           padding: EdgeInsets.only(right: 120.0), // Отступ справа
           child: Text(
             'Expense',
@@ -218,7 +218,7 @@ class _FirstInfoState extends State<FirstInfo> {
 class SecondInfo extends StatefulWidget {
   final TextEditingController controller1;
 
-  SecondInfo(this.controller1);
+  const SecondInfo(this.controller1, {super.key});
 
   @override
   _SecondInfoState createState() => _SecondInfoState(controller1);
@@ -234,13 +234,13 @@ class _SecondInfoState extends State<SecondInfo> {
   Widget build(BuildContext context) {
     double thirdScreenHeight = MediaQuery.of(context).size.height / 3 + 60;
 
-    return Container(
+    return SizedBox(
       height: thirdScreenHeight,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           _buildTextField('Shopping', 'Name', controller1),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           _buildSwitch('Type'),
         ],
       ),
@@ -251,8 +251,8 @@ class _SecondInfoState extends State<SecondInfo> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(info, style: TextStyle(color: Colors.white, fontSize: 18.0)),
-        Container(
+        Text(info, style: const TextStyle(color: Colors.white, fontSize: 18.0)),
+        SizedBox(
           width: 280.0,
           height: 45.0,
           child: Padding(
@@ -262,10 +262,10 @@ class _SecondInfoState extends State<SecondInfo> {
               decoration: InputDecoration(
                 hintText: hint,
                 filled: true,
-                fillColor: Color.fromARGB(255, 44, 44, 44),
-                contentPadding: EdgeInsets.only(left: 10.0, bottom: 10.0),
+                fillColor: const Color.fromARGB(255, 44, 44, 44),
+                contentPadding: const EdgeInsets.only(left: 10.0, bottom: 10.0),
               ),
-              style: TextStyle(fontSize: 18.0, color: Colors.white),
+              style: const TextStyle(fontSize: 18.0, color: Colors.white),
               textAlignVertical: TextAlignVertical.center,
             ),
           ),
@@ -278,7 +278,7 @@ class _SecondInfoState extends State<SecondInfo> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(info, style: TextStyle(color: Colors.white, fontSize: 18.0)),
+        Text(info, style: const TextStyle(color: Colors.white, fontSize: 18.0)),
         Transform.scale(
           scale: 1 / 1.8, // Уменьшение размера в 1.8 раза
           child: Switch(
@@ -292,7 +292,7 @@ class _SecondInfoState extends State<SecondInfo> {
                 activeTrackColor: const Color.fromARGB(255, 26, 26, 26), // Цвет полосы
           ),
         ),
-        Padding(
+        const Padding(
           padding: EdgeInsets.only(right: 120.0), // Отступ справа
           child: Text(
             'Expense',
