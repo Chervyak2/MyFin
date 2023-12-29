@@ -9,7 +9,7 @@ class IncomesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
         body: Center(
-      child: DateWidget('assets/images/pdrb4.gif'),
+      child: DateWidget(),
     ));
   }
 }
