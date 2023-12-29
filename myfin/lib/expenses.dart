@@ -10,7 +10,7 @@ class ExpensesScreen extends StatelessWidget {
       body: SafeArea(
         child: Stack(
           children: [
-            DateWidget(),
+            const DateWidget(),
             Center(
               child: Column(
                 children: [
@@ -18,7 +18,7 @@ class ExpensesScreen extends StatelessWidget {
                     child: SingleChildScrollView(
                       child: Column(
                         children: [
-                          ExpansionCategoryTile(),
+                          expansionCategoryTile(),
                           // Add other widgets as needed
                         ],
                       ),
@@ -33,21 +33,21 @@ class ExpensesScreen extends StatelessWidget {
     );
   }
 
-  ExpansionTile ExpansionCategoryTile() {
+  ExpansionTile expansionCategoryTile() {
     return ExpansionTile(
-      title: Text("Category1"),
+      title: const Text("Category1"),
       backgroundColor: Colors.black,
       textColor: Colors.white, // Assuming whiteColor is defined
-      childrenPadding: EdgeInsets.only(left: 20),
-      leading: Icon(Icons.favorite_border),
+      childrenPadding: const EdgeInsets.only(left: 20),
+      leading: const Icon(Icons.favorite_border),
       children: List.generate(
         3,
         (index) => Column(
           children: [
             ListTile(
               textColor: Colors.white,
-              title: Text("Record1"),
-              subtitle: Text("100.oo dollars"),
+              title: const Text("Record1"),
+              subtitle: const Text("100.oo dollars"),
               onTap: () {
                 print("tapped");
               },
