@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myfin/date_widget.dart';
 import 'package:intl/intl.dart';
 
 class NewScreen extends StatefulWidget {
@@ -13,6 +14,7 @@ class _NewScreenState extends State<NewScreen> {
   final _firstInfoController1 = TextEditingController();
   final _firstInfoController2 = TextEditingController();
   final _firstInfoController3 = TextEditingController();
+  final _firstInfoController4 = TextEditingController();
   final _secondInfoController1 = TextEditingController();
 
   @override
@@ -82,10 +84,10 @@ class _NewScreenState extends State<NewScreen> {
               ),
             ),
             SizedBox(height: 40), // Добавлено здесь
-            _showFirstInfo ? FirstInfo(_firstInfoController1, _firstInfoController2, _firstInfoController3) : SecondInfo(_secondInfoController1),
+            _showFirstInfo ? FirstInfo(_firstInfoController1, _firstInfoController2, _firstInfoController3, _firstInfoController4) : SecondInfo(_secondInfoController1),
             Container(
-              height: 60,
-              width: 220,
+              height: 55,
+              width: 200,
               decoration: BoxDecoration(
                 color: Colors.black,
                 borderRadius: BorderRadius.circular(12), // Задайте радиус скругления
@@ -121,20 +123,21 @@ class FirstInfo extends StatefulWidget {
   final TextEditingController controller1;
   final TextEditingController controller2;
   final TextEditingController controller3;
-
-  FirstInfo(this.controller1, this.controller2, this.controller3);
+  final TextEditingController controller4;
+  FirstInfo(this.controller1, this.controller2, this.controller3, this.controller4);
 
   @override
-  _FirstInfoState createState() => _FirstInfoState(controller1, controller2, controller3);
+  _FirstInfoState createState() => _FirstInfoState(controller1, controller2, controller3, controller4);
 }
 
 class _FirstInfoState extends State<FirstInfo> {
   final TextEditingController controller1;
   final TextEditingController controller2;
   final TextEditingController controller3;
+  final TextEditingController controller4;
   bool switchValue = true;
 
-  _FirstInfoState(this.controller1, this.controller2, this.controller3);
+  _FirstInfoState(this.controller1, this.controller2, this.controller3, this.controller4);
 
   @override
   Widget build(BuildContext context) {
@@ -145,11 +148,13 @@ class _FirstInfoState extends State<FirstInfo> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          _buildTextField('Shopping', 'Description', controller1),
+          _buildTextField('Shopping', 'Category', controller1),
           SizedBox(height: 10),
-          _buildTextField('\$30.00', 'Amount', controller2),
+          _buildTextField('Food', 'Description', controller2),
           SizedBox(height: 10),
-          _buildTextField('Nov 24.11.2023', 'Date', controller3),
+          _buildTextField('\$30.00', 'Amount', controller3),
+          SizedBox(height: 10),
+          _buildTextField('24.11.2023', 'Date', controller4),
           SizedBox(height: 10),
           _buildSwitch('Type'),
         ],
@@ -158,62 +163,70 @@ class _FirstInfoState extends State<FirstInfo> {
   }
 
   Widget _buildTextField(String hint, String info, TextEditingController controller) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(info, style: TextStyle(color: Colors.white, fontSize: 18.0)),
-        Container(
-          width: 280.0,
-          height: 45.0,
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextField(
-              controller: controller,
-              decoration: InputDecoration(
-                hintText: hint,
-                filled: true,
-                fillColor: Color.fromARGB(255, 44, 44, 44),
-                contentPadding: EdgeInsets.only(left: 10.0, bottom: 10.0),
+    return Padding(
+      padding: EdgeInsets.only(right: 10.0, left: 20.0), // Добавлены отступы справа и слева
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(info, style: TextStyle(color: Colors.white, fontSize: 18.0)),
+          Container(
+            width: 260.0,
+            height: 45.0,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                controller: controller,
+                decoration: InputDecoration(
+                  hintText: hint,
+                  hintStyle: TextStyle(color: Colors.grey), // Изменен цвет подсказки на серый
+                  filled: true,
+                  fillColor: Color.fromARGB(255, 44, 44, 44),
+                  contentPadding: EdgeInsets.only(left: 10.0, bottom: 10.0),
+                ),
+                style: TextStyle(fontSize: 18.0, color: Colors.white),
+                textAlignVertical: TextAlignVertical.center,
               ),
-              style: TextStyle(fontSize: 18.0, color: Colors.white),
-              textAlignVertical: TextAlignVertical.center,
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
   
-    Widget _buildSwitch(String info) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(info, style: TextStyle(color: Colors.white, fontSize: 18.0)),
-        Transform.scale(
-          scale: 1 / 1.8, // Уменьшение размера в 1.8 раза
-          child: Switch(
-            value: switchValue,
-            onChanged: (value) {
-              setState(() {
-                switchValue = value;
-              });
-            },
-                activeColor: const Color.fromARGB(255, 184, 118, 81), // Цвет ползунка
-                activeTrackColor: const Color.fromARGB(255, 26, 26, 26), // Цвет полосы
+  Widget _buildSwitch(String info) {
+    return Padding(
+      padding: EdgeInsets.only(left: 20.0), // Добавлен отступ слева
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(info, style: TextStyle(color: Colors.white, fontSize: 18.0)),
+          Transform.scale(
+            scale: 1 / 1.8, // Уменьшение размера в 1.8 раза
+            child: Switch(
+              value: switchValue,
+              onChanged: (value) {
+                setState(() {
+                  switchValue = value;
+                });
+              },
+              activeColor: const Color.fromARGB(255, 184, 118, 81), // Цвет ползунка
+              activeTrackColor: const Color.fromARGB(255, 26, 26, 26), // Цвет полосы
+            ),
           ),
-        ),
-        Padding(
-          padding: EdgeInsets.only(right: 120.0), // Отступ справа
-          child: Text(
-            'Expense',
-            style: TextStyle(fontSize: 18.0, color: Colors.white),
+          Padding(
+            padding: EdgeInsets.only(right: 110.0), // Отступ справа
+            child: Text(
+              switchValue ? 'Expense' : 'Income', // Изменен текст в зависимости от состояния переключателя
+              style: TextStyle(fontSize: 18.0, color: Colors.white),
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
-
 }
+
+
 
 class SecondInfo extends StatefulWidget {
   final TextEditingController controller1;
@@ -248,58 +261,65 @@ class _SecondInfoState extends State<SecondInfo> {
   }
 
   Widget _buildTextField(String hint, String info, TextEditingController controller) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(info, style: TextStyle(color: Colors.white, fontSize: 18.0)),
-        Container(
-          width: 280.0,
-          height: 45.0,
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextField(
-              controller: controller,
-              decoration: InputDecoration(
-                hintText: hint,
-                filled: true,
-                fillColor: Color.fromARGB(255, 44, 44, 44),
-                contentPadding: EdgeInsets.only(left: 10.0, bottom: 10.0),
+    return Padding(
+      padding: EdgeInsets.only(right: 10.0, left: 20.0), // Добавлены отступы справа и слева
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(info, style: TextStyle(color: Colors.white, fontSize: 18.0)),
+          Container(
+            width: 260.0,
+            height: 45.0,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                controller: controller,
+                decoration: InputDecoration(
+                  hintText: hint,
+                  hintStyle: TextStyle(color: Colors.grey), // Изменен цвет подсказки на серый
+                  filled: true,
+                  fillColor: Color.fromARGB(255, 44, 44, 44),
+                  contentPadding: EdgeInsets.only(left: 10.0, bottom: 10.0),
+                ),
+                style: TextStyle(fontSize: 18.0, color: Colors.white),
+                textAlignVertical: TextAlignVertical.center,
               ),
-              style: TextStyle(fontSize: 18.0, color: Colors.white),
-              textAlignVertical: TextAlignVertical.center,
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
-    Widget _buildSwitch(String info) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(info, style: TextStyle(color: Colors.white, fontSize: 18.0)),
-        Transform.scale(
-          scale: 1 / 1.8, // Уменьшение размера в 1.8 раза
-          child: Switch(
-            value: switchValue,
-            onChanged: (value) {
-              setState(() {
-                switchValue = value;
-              });
-            },
-                activeColor: const Color.fromARGB(255, 184, 118, 81), // Цвет ползунка
-                activeTrackColor: const Color.fromARGB(255, 26, 26, 26), // Цвет полосы
+  Widget _buildSwitch(String info) {
+    return Padding(
+      padding: EdgeInsets.only(left: 20.0), // Добавлен отступ слева
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(info, style: TextStyle(color: Colors.white, fontSize: 18.0)),
+          Transform.scale(
+            scale: 1 / 1.8, // Уменьшение размера в 1.8 раза
+            child: Switch(
+              value: switchValue,
+              onChanged: (value) {
+                setState(() {
+                  switchValue = value;
+                });
+              },
+              activeColor: const Color.fromARGB(255, 184, 118, 81), // Цвет ползунка
+              activeTrackColor: const Color.fromARGB(255, 26, 26, 26), // Цвет полосы
+            ),
           ),
-        ),
-        Padding(
-          padding: EdgeInsets.only(right: 120.0), // Отступ справа
-          child: Text(
-            'Expense',
-            style: TextStyle(fontSize: 18.0, color: Colors.white),
+          Padding(
+            padding: EdgeInsets.only(right: 110.0), // Отступ справа
+            child: Text(
+              switchValue ? 'Expense' : 'Income', // Изменен текст в зависимости от состояния переключателя
+              style: TextStyle(fontSize: 18.0, color: Colors.white),
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
