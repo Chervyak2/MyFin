@@ -46,7 +46,6 @@ class AuthController extends GetxController{
       'email' : email,
       'imageUrl': '',
       'id': currentUser!.uid
-
     });
   }
 

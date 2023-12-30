@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:myfin/consts/conctc.dart';
-import 'package:myfin/consts/images.dart';
+
 class HomePage extends StatefulWidget {
   final Function(int) onTabChange;
   final List<Widget> screens;

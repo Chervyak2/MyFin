@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:myfin/consts/conctc.dart';
 import 'package:myfin/splash_screen.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:myfin/consts/firebase_consts.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 

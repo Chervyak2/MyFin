@@ -9,13 +9,13 @@ import 'package:myfin/consts/conctc.dart';
 import 'package:myfin/custom_textfield.dart';
 import 'package:myfin/home.dart';
 import 'package:myfin/incomes.dart';
-import 'package:myfin/login_controller.dart';
+
 import 'package:myfin/our_button.dart';
 import 'package:myfin/homepage.dart';
 import 'package:myfin/profile_screen.dart';
 import 'new.dart';
 import 'expenses.dart';
-import 'login_controller.dart';
+
 class SignupScreen extends StatefulWidget {
   const SignupScreen({Key? key}):super(key: key);
 
