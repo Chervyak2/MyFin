@@ -7,7 +7,6 @@ User? currentUser = auth.currentUser;
 
 //collections
 const usersCollection = "users";
-const expensesCategoriesCollection = 'expense_categories';
-const incomesCategoriesCollection = 'income_categories';
+const categoriesCollection = 'categories';
 const expensesCollection = 'expenses';
 const incomesCollection = 'incomes';
