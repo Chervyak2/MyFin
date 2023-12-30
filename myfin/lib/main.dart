@@ -3,15 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:myfin/consts/conctc.dart';
 import 'package:myfin/splash_screen.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:myfin/consts/firebase_consts.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  try {
-    await Firebase.initializeApp();
-  } catch (e, stackTrace) {
-    print('Error initializing Firebase: $e\n$stackTrace');
-  }
+
+   await Firebase.initializeApp(options: FirebaseOptions(apiKey: 'AIzaSyBVd-tkdRZZyHOZTOxROG7CnQmdJiNbOKY', appId: '1:997969505215:android:1cd7dcdcf9f07ae2ff8f0a', messagingSenderId: '', projectId: 'myfin-3fde1'));
+
   runApp(const MyApp());
-}
+} 
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
