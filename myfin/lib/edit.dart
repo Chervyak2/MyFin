@@ -168,7 +168,8 @@ class _FirstInfoState extends State<FirstInfo> {
   Widget _buildTextField(
       String hint, String info, TextEditingController controller) {
     return Padding(
-      padding: EdgeInsets.only(right: 10.0, left: 20.0),
+      padding: EdgeInsets.only(
+          right: 10.0, left: 20.0), // Добавлены отступы справа и слева
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -180,6 +181,7 @@ class _FirstInfoState extends State<FirstInfo> {
               padding: const EdgeInsets.all(8.0),
               child: TextField(
                 controller: controller,
+
                 keyboardType: info == 'Amount'
                     ? TextInputType.numberWithOptions(decimal: true)
                     : null, // Добавлено здесь
@@ -191,6 +193,7 @@ class _FirstInfoState extends State<FirstInfo> {
                 decoration: InputDecoration(
                   hintText: hint,
                   hintStyle: TextStyle(color: Colors.grey),
+
                   filled: true,
                   fillColor: Color.fromARGB(255, 44, 44, 44),
                   contentPadding: EdgeInsets.only(left: 10.0, bottom: 10.0),

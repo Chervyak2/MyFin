@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+
 import 'package:myfin/consts/firebase_consts.dart';
+
 import 'package:myfin/date_widget.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter/services.dart';
@@ -188,7 +190,10 @@ class _FirstInfoState extends State<FirstInfo> {
   Widget _buildTextField(
       String hint, String info, TextEditingController controller) {
     return Padding(
-      padding: EdgeInsets.only(right: 10.0, left: 20.0),
+
+      padding: EdgeInsets.only(
+          right: 10.0, left: 20.0), // Добавлены отступы справа и слева
+
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -200,6 +205,7 @@ class _FirstInfoState extends State<FirstInfo> {
               padding: const EdgeInsets.all(8.0),
               child: TextField(
                 controller: controller,
+
                 keyboardType: info == 'Amount'
                     ? TextInputType.numberWithOptions(decimal: true)
                     : null, // Добавлено здесь
@@ -211,6 +217,7 @@ class _FirstInfoState extends State<FirstInfo> {
                 decoration: InputDecoration(
                   hintText: hint,
                   hintStyle: TextStyle(color: Colors.grey),
+
                   filled: true,
                   fillColor: Color.fromARGB(255, 44, 44, 44),
                   contentPadding: EdgeInsets.only(left: 10.0, bottom: 10.0),
@@ -363,7 +370,6 @@ class _SecondInfoState extends State<SecondInfo> {
       ),
     );
   }
-
   storeCategoryData({categoryName, type}) async {
     DocumentReference store =
         await firestore.collection(categoriesCollection).doc();
@@ -375,4 +381,5 @@ class _SecondInfoState extends State<SecondInfo> {
   //       await firestore.collection(recordsCollection).doc();
   //   store.set({'recordName': recordName, 'price': price, 'type': type});
   // }
+
 }
