@@ -181,10 +181,19 @@ class _FirstInfoState extends State<FirstInfo> {
               padding: const EdgeInsets.all(8.0),
               child: TextField(
                 controller: controller,
+
+                keyboardType: info == 'Amount'
+                    ? TextInputType.numberWithOptions(decimal: true)
+                    : null, // Добавлено здесь
+                inputFormatters: info == 'Amount'
+                    ? <TextInputFormatter>[
+                        FilteringTextInputFormatter.allow(RegExp(r'^\d*\.?\d*'))
+                      ]
+                    : null, // Добавлено здесь
                 decoration: InputDecoration(
                   hintText: hint,
-                  hintStyle: TextStyle(
-                      color: Colors.grey), // Изменен цвет подсказки на серый
+                  hintStyle: TextStyle(color: Colors.grey),
+
                   filled: true,
                   fillColor: Color.fromARGB(255, 44, 44, 44),
                   contentPadding: EdgeInsets.only(left: 10.0, bottom: 10.0),
